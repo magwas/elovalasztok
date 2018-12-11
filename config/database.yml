@@ -86,4 +86,5 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: postgresql://db.elovalasztok@db.edemokraciagep.org/decidim?sslmode=require
+
