@@ -6,7 +6,7 @@ if Rails.application.secrets.dig(:omniauth, :participa, :enabled)
 
   Devise.setup do |config|
     config.omniauth :ada,
-                    name: "participa",
+                    name: "ada",
                     identifier: Rails.application.secrets.dig(:omniauth, :ada, :identifier)
   end
 
