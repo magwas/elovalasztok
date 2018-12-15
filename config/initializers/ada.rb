@@ -1,7 +1,7 @@
 
 # frozen_string_literal: true
 
-if Rails.application.secrets.dig(:omniauth, :participa, :enabled)
+if Rails.application.secrets.dig(:omniauth, :ada, :enabled)
   require "omniauth/strategies/ada"
 
   Devise.setup do |config|
