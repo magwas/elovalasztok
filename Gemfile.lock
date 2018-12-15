@@ -199,7 +199,7 @@ GEM
       invisible_captcha (~> 0.10.0)
       jquery-rails (~> 4.3)
       kaminari (~> 1.0)
-      loofah (~> 2.0, >= 2.2.1)
+      loofah ( >= 2.2.3)
       mini_magick (~> 4.8)
       nobspw (~> 0.4.0)
       omniauth (~> 1.6)
