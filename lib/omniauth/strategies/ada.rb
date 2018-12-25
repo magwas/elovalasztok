@@ -6,8 +6,6 @@ module OmniAuth
       # Give your strategy a name.
       option :name, "Ada"
 
-      option :client_secret, "ek6ShaiwWeic8eih"
-      option :client_id, "cc5cbaf3-f1da-4fd8-be16-a4e48b9a116e"
       option :auth_scheme, :request_body
       option :provider_ignores_state, true
 
@@ -30,7 +28,9 @@ module OmniAuth
         {
           :name => 'Anonim Felhasználó',
           :email => raw_info['email'],
-          :id => raw_info['userid']
+          :id => raw_info['userid'],
+	  :officialized_at => officialized_at,
+	  :officialized_as => officialized_as
         }
       end
 
@@ -42,7 +42,30 @@ module OmniAuth
 
       def raw_info
 	resp = access_token.get('/ada/v1/users/me')
-        @raw_info ||= resp.parsed
+	r = resp.parsed
+        @raw_info ||= r
+      end
+
+      def officialized_as
+	   if ("" == assurances)
+	   then
+	      @officialized_as = nil
+	   else
+	      @officialized_as = {"hu" => assurances }
+	   end
+      end
+
+      def officialized_at
+	   if ("" == assurances)
+	   then
+	      @officialized_at = nil
+	   else
+		   @officialized_at = Time.current
+	   end
+      end
+
+      def assurances
+          @assurances = raw_info["assurances"].to_set.to_a.sort.join(", ")
       end
 
     end

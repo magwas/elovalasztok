@@ -7,7 +7,8 @@ if Rails.application.secrets.dig(:omniauth, :ada, :enabled)
   Devise.setup do |config|
     config.omniauth :ada,
                     name: "ada",
-                    identifier: Rails.application.secrets.dig(:omniauth, :ada, :identifier)
+                    client_id: Rails.application.secrets.dig(:omniauth, :ada, :client_id),
+                    client_secret: Rails.application.secrets.dig(:omniauth, :ada, :client_secret)
   end
 
   Decidim::User.omniauth_providers << :ada
